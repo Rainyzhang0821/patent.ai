@@ -1,0 +1,194 @@
+/* ========== UD Design Tokens ========== */
+:root {
+  /* Text */
+  --token-text-title: #1f2329;
+  --token-text-caption: #646a73;
+  --token-text-placeholder: #8f959e;
+  --token-text-link: #1456f0;
+  --token-text-link-hover: #336df4;
+
+  /* Background */
+  --token-bg-body: #ffffff;
+  --token-bg-float: #ffffff;
+  --token-bg-subnav: #f9faff;
+  --token-bg-filler: #eff0f1;
+  --token-bg-page: #f9faff;
+
+  /* Border */
+  --token-line-border-component: #d0d3d6;
+  --token-line-border-card: #dee0e3;
+
+  /* Icon */
+  --token-icon-n1: #2b2f36;
+  --token-icon-n2: #646a73;
+  --token-icon-n3: #8f959e;
+
+  /* Semantic - Primary */
+  --token-primary: #1456f0;
+  --token-primary-light: #e8eeff;
+  --token-primary-border: #a3bcf9;
+
+  /* Semantic - Success */
+  --token-success: #00b365;
+  --token-success-light: #e8f8f0;
+  --token-success-border: #9ce0bf;
+  --token-success-text: #00894e;
+
+  /* Semantic - Danger */
+  --token-danger: #f53f3f;
+  --token-danger-light: #fff0f0;
+  --token-danger-border: #fbb;
+  --token-danger-text: #cb2634;
+
+  /* Semantic - Warning / Orange */
+  --token-warning: #ff7d00;
+  --token-warning-light: #fff7e8;
+  --token-warning-border: #ffd591;
+  --token-warning-text: #d25f00;
+  --token-orange: #f77234;
+
+  /* Shadow */
+  --shadow-ai: 0px 8px 14px 0px rgba(31,35,41,0.02), 0px 12px 20px 0px rgba(31,35,41,0.04);
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 100px;
+
+  /* Typography */
+  --font-cn: "PingFang SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-en: "Outfit", sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  width: 100%; height: 100%;
+  font-family: var(--font-cn);
+  color: var(--token-text-title);
+  background: var(--token-bg-page);
+  overflow: hidden;
+}
+
+#app {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+
+/* ===== Shared Utility Classes ===== */
+.text-success { color: var(--token-success-text) !important; }
+.text-danger  { color: var(--token-danger-text) !important; }
+.text-warning { color: var(--token-warning-text) !important; }
+.text-link    { color: var(--token-text-link); cursor: pointer; }
+.text-link:hover { text-decoration: underline; }
+
+/* ===== Shared Buttons ===== */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 6px 16px; background: var(--token-primary); color: #fff;
+  border: none; border-radius: 6px; font-size: 13px; font-weight: 500;
+  cursor: pointer; white-space: nowrap; line-height: 20px;
+}
+.btn-primary:hover { background: #1040cc; }
+.btn-default {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 6px 14px; background: #fff; color: var(--token-text-title);
+  border: 0.5px solid var(--token-line-border-component); border-radius: 6px;
+  font-size: 13px; cursor: pointer; white-space: nowrap; line-height: 20px;
+}
+.btn-default:hover { background: var(--token-bg-filler); }
+.btn-link {
+  display: inline-flex; align-items: center; gap: 2px;
+  padding: 2px 6px; background: none; border: none;
+  color: var(--token-text-link); font-size: 13px; cursor: pointer;
+  white-space: nowrap;
+}
+.btn-link:hover { text-decoration: underline; }
+.btn-back {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 4px 8px; background: none; border: none;
+  color: var(--token-text-caption); font-size: 13px; cursor: pointer;
+  border-radius: 6px;
+}
+.btn-back:hover { background: var(--token-bg-filler); }
+.btn-back svg { width: 14px; height: 14px; }
+.btn-sm { padding: 4px 10px; font-size: 12px; }
+.btn-sm svg { width: 12px; height: 12px; }
+
+/* ===== Score Tags ===== */
+.score-tag {
+  display: inline-block; padding: 1px 8px; border-radius: 4px;
+  font-size: 12px; font-weight: 500; line-height: 20px;
+}
+.score-tag-green { background: var(--token-success-light); color: var(--token-success-text); }
+.score-tag-orange { background: var(--token-warning-light); color: var(--token-warning-text); }
+.score-tag-red { background: var(--token-danger-light); color: var(--token-danger-text); }
+
+/* ===== UD Tooltip（深色气泡，fixed 挂载 body，避免表格 overflow 裁剪） ===== */
+#ud-tooltip-host {
+  position: fixed;
+  z-index: 100002;
+  margin: 0;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: rgba(31, 35, 41, 0.92);
+  color: #fff;
+  font-family: var(--font-cn);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  max-width: min(400px, calc(100vw - 16px));
+  box-shadow: 0 4px 14px rgba(31, 35, 41, 0.2);
+  pointer-events: none;
+  white-space: normal;
+  overflow-wrap: break-word;
+  text-align: center;
+}
+#ud-tooltip-host[hidden] {
+  display: none !important;
+}
+#ud-tooltip-host::after {
+  content: '';
+  position: absolute;
+  left: var(--ud-tooltip-arrow-x, 50%);
+  margin-left: -5px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+}
+#ud-tooltip-host[data-ud-placement='top']::after {
+  bottom: -5px;
+  border-top: 5px solid rgba(31, 35, 41, 0.92);
+}
+#ud-tooltip-host[data-ud-placement='bottom']::after {
+  top: -5px;
+  border-bottom: 5px solid rgba(31, 35, 41, 0.92);
+}
+
+/* ===== 表格表头吸顶（父级为 overflow:auto/scroll 时，纵向滚动 thead 留在顶部） ===== */
+.ud-table.wf-table thead th,
+.result-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+/* ===== Animations ===== */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}

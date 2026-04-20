@@ -1,0 +1,393 @@
+/* ========== Home Page (首页 - node 1514:141326) ========== */
+
+/* Content wrapper: 1172px, bg white, rounded 12, centered */
+.home-content {
+  flex: 1;
+  height: 100%;
+  padding: 8px 8px 8px 0;
+}
+.home-card {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  background-color: var(--token-bg-float);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0;
+  padding-bottom: 32px;
+  padding-top: 24px;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  isolation: isolate;
+}
+
+/* 主列：新对话页仅此一块；margin auto 在 .home-card 内垂直居中，内容过高时自动贴顶可滚动 */
+.home-main-area {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  min-height: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.home-upper {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  min-height: 0;
+}
+
+/* 渐变：挂在标题+对话框外层，页面高度变化时与输入框相对位置不变 */
+.home-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+}
+.home-hero::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -96px;
+  width: min(1400px, 142%);
+  height: min(540px, 70vh);
+  transform: translateX(-50%);
+  background-image: url('./assets/Group-1321318878.svg');
+  background-repeat: no-repeat;
+  background-position: 50% 18%;
+  background-size: min(1400px, 118%) auto;
+  pointer-events: none;
+  z-index: 0;
+}
+.home-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.home-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* 工作流列表：与首页同款白底圆角卡片，内容区全宽铺展 */
+.home-card.home-card--workflow {
+  align-items: stretch;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  padding-left: 24px;
+  padding-right: 24px;
+  gap: 16px;
+}
+
+/* Center block: w800；与「你可能想问」仅 16px，标题↔对话框仍在 .home-hero 内 32px */
+.home-center {
+  width: min(800px, 90%);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+/* Title area */
+.home-title-block {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.home-title-logo {
+  display: block;
+  height: 20px;
+  width: calc(20px * 100 / 17);
+  flex-shrink: 0;
+  background-color: rgba(31, 35, 41, 1);
+  -webkit-mask-image: url('./assets/Patent.AI.svg');
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-image: url('./assets/Patent.AI.svg');
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}
+.home-subtitle {
+  font-family: var(--font-cn);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--token-icon-n3);
+}
+
+/* Input box: w800, rounded 16, shadow, p12 */
+.home-input {
+  width: 100%;
+}
+.ai-chat-sender {
+  width: 100%;
+  min-width: 300px;
+  max-width: 800px;
+  background: var(--token-bg-body);
+  border-radius: 16px;
+  box-shadow: var(--shadow-ai);
+  padding: 12px;
+}
+.ai-sender-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 100px;
+}
+.ai-sender-textarea {
+  padding: 4px 8px 0;
+}
+.ai-sender-placeholder {
+  font-family: var(--font-cn);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--token-text-placeholder);
+  min-height: 48px;
+}
+.ai-sender-real-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  background: transparent;
+  font-family: var(--font-cn);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--token-text-title);
+  min-height: 20px;
+  overflow-y: auto;
+}
+.ai-sender-real-input::placeholder {
+  color: var(--token-text-placeholder);
+}
+.ai-sender-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+.ai-sender-agent-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border: 0.5px solid var(--token-line-border-component);
+  border-radius: 100px;
+  background: white;
+  opacity: 0;
+}
+.ai-send-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 20px;
+  background: rgba(31, 35, 41, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 2px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.ai-send-btn.is-active {
+  background: var(--token-primary);
+}
+.ai-send-btn svg {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+/* Prompt section */
+.home-prompt {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.home-prompt-header {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 32px;
+  min-height: 32px;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--token-text-placeholder);
+}
+.home-prompt-title {
+  font-family: var(--font-cn);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--token-text-placeholder);
+}
+
+/* Chips */
+.home-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.home-chip {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 0.5px solid var(--token-line-border-component);
+  border-radius: var(--radius-full);
+  background: white;
+  cursor: pointer;
+}
+.home-chip:hover {
+  border-color: #b8c4d6;
+}
+.home-chip-emoji {
+  width: 16px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 22px;
+}
+.home-chip-text {
+  font-family: var(--font-cn);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--token-text-caption);
+  white-space: nowrap;
+}
+
+/* Workflow section — 与 .home-center 同宽，与上方内容间距 32px */
+.home-workflow {
+  width: min(800px, 90%);
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 1;
+  flex-shrink: 0;
+}
+.home-workflow-title {
+  font-family: var(--font-cn);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--token-text-title);
+}
+/* 首页「常用工作流」与「你可能想问」标题样式一致 */
+.home-main-area .home-workflow-title {
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--token-text-placeholder);
+}
+.home-workflow-grid {
+  display: flex;
+  gap: 16px;
+}
+.home-workflow-grid--with-create {
+  flex-wrap: wrap;
+}
+.home-workflow-grid--with-create .home-wf-card {
+  flex: 1 1 160px;
+  min-width: 160px;
+}
+.home-wf-card {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  padding: 16px;
+  border: 0.5px solid var(--token-line-border-card);
+  border-radius: 12px;
+  background: var(--token-bg-body);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.15s ease;
+}
+.home-wf-card::after {
+  content: '';
+  position: absolute;
+  top: 16px;
+  right: 8px;
+  width: 26px;
+  height: calc(26px * 19 / 20);
+  background-image: url('./assets/Vector.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  pointer-events: none;
+  z-index: 0;
+}
+.home-wf-card > * {
+  position: relative;
+  z-index: 1;
+}
+.home-wf-card:hover {
+  border-color: var(--token-primary);
+}
+.home-wf-top {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.home-wf-top-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.home-wf-icon {
+  color: var(--token-icon-n1);
+  display: flex;
+}
+.home-wf-icon svg { width: 16px; height: 16px; }
+.home-wf-name {
+  font-family: var(--font-cn);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--token-text-title);
+}
+.home-wf-desc {
+  font-family: var(--font-cn);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: var(--token-text-placeholder);
+}
+.home-wf-card--soon {
+  opacity: 0.88;
+}
+.home-wf-card--soon:hover {
+  border-color: var(--token-line-border-card);
+  box-shadow: none;
+}
+.home-wf-soon {
+  flex-shrink: 0;
+  font-size: 11px;
+  line-height: 22px;
+  color: var(--token-text-placeholder);
+}
+

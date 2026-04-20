@@ -1,0 +1,7 @@
+{
+  "name": "figma-patent-ai",
+  "private": true,
+  "scripts": {
+    "preview": "node preview.mjs"
+  }
+}
