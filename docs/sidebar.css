@@ -1,0 +1,257 @@
+/* ========== Sub-Nav-II (260px sidebar) ========== */
+.sidebar {
+  width: 260px;
+  min-width: 260px;
+  height: 100%;
+  background: var(--token-bg-subnav);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: width 0.2s ease, min-width 0.2s ease;
+  /* 与「新对话 / 工作流」同一套水平栅格 */
+  --sb-nav-outer-x: 16px;
+  --sb-nav-item-pad-x: 12px;
+  --sb-nav-icon-w: 16px;
+  --sb-nav-icon-gap: 8px;
+}
+
+/* Logo row: h48, px18 */
+.sidebar-logo {
+  height: 48px;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 4px;
+}
+.sidebar-brand-logo {
+  display: block;
+  height: 14px;
+  width: auto;
+}
+.sidebar-collapse {
+  color: var(--token-icon-n3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 4px;
+  margin: 0;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+.sidebar-collapse:hover {
+  background: rgba(31, 35, 41, 0.06);
+  color: var(--token-icon-n1);
+}
+.sidebar-collapse:focus-visible {
+  outline: none;
+  background: rgba(31, 35, 41, 0.06);
+  color: var(--token-icon-n1);
+}
+.sidebar-collapse svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+/* Nav list */
+.sidebar-nav {
+  padding: 4px var(--sb-nav-outer-x) 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Nav item: h46, rounded 8；与 --sb-nav-* 一致 */
+.sidebar-nav-item {
+  height: 46px;
+  padding: 0 var(--sb-nav-item-pad-x);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: var(--sb-nav-icon-gap);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--token-text-title);
+}
+.sidebar-nav-item:hover {
+  background: rgba(31, 35, 41, 0.04);
+}
+.sidebar-nav-item.is-active {
+  background: var(--token-bg-float);
+  border: 0.5px solid var(--token-bg-filler);
+  font-weight: 500;
+}
+.sidebar-nav-icon {
+  width: var(--sb-nav-icon-w);
+  height: var(--sb-nav-icon-w);
+  flex: 0 0 var(--sb-nav-icon-w);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--token-icon-n1);
+}
+.sidebar-nav-icon svg { width: var(--sb-nav-icon-w); height: var(--sb-nav-icon-w); }
+
+/* 历史对话：外层左右与 .sidebar-nav 同为 16px，单行 hover 宽度与 Tab 一致 */
+.sidebar-hist {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-top: 24px;
+  padding: 0 var(--sb-nav-outer-x);
+}
+.sidebar-hist-heading.hist-section-title {
+  padding: 0 0 6px var(--sb-nav-item-pad-x);
+}
+.sidebar-hist-list.hist-list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 0 8px;
+  -webkit-overflow-scrolling: touch;
+}
+.sidebar-hist-empty {
+  margin: 0;
+  padding: 2px 0 10px var(--sb-nav-item-pad-x);
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--token-text-placeholder);
+}
+
+/* 与 .sidebar-nav-item 同宽、同圆角；选中态与白底 Tab 一致 */
+.sidebar-hist .hist-item {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 var(--sb-nav-item-pad-x);
+  border-radius: 8px;
+  border: 0.5px solid transparent;
+}
+.sidebar-hist .hist-item:hover:not(.is-active) {
+  background: rgba(31, 35, 41, 0.04);
+}
+.sidebar-hist .hist-item:focus-visible {
+  outline: none;
+  background: rgba(31, 35, 41, 0.04);
+}
+.sidebar-hist .hist-item.is-active {
+  background: var(--token-bg-float);
+  border-color: var(--token-bg-filler);
+  font-weight: 500;
+}
+.sidebar-hist .hist-item.is-active:hover,
+.sidebar-hist .hist-item.is-active:focus-visible {
+  background: var(--token-bg-float);
+  border-color: var(--token-bg-filler);
+}
+
+/* User row */
+.sidebar-user {
+  flex-shrink: 0;
+  padding: 0 var(--sb-nav-outer-x) 24px;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sidebar-user-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sidebar-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--token-bg-filler);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.sidebar-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.sidebar-username {
+  font-size: 14px;
+  color: var(--token-text-title);
+}
+.sidebar-setting {
+  color: var(--token-icon-n3);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.sidebar-setting svg { width: 16px; height: 16px; }
+
+/* 收起：仅顶栏切换 + 新对话 / 工作流 三个图标；历史与用户行隐藏 */
+.sidebar--collapsed {
+  width: 56px;
+  min-width: 56px;
+}
+.sidebar--collapsed .sidebar-brand {
+  display: none;
+}
+.sidebar--collapsed .sidebar-logo {
+  justify-content: center;
+  padding-left: 0;
+  padding-right: 0;
+  height: 46px;
+  min-height: 46px;
+}
+/* 与收起态 .sidebar-nav-item 同尺寸、同色、同 hover（图标继承 currentColor） */
+.sidebar--collapsed .sidebar-collapse {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 8px;
+  color: var(--token-icon-n1);
+}
+.sidebar--collapsed .sidebar-collapse:hover,
+.sidebar--collapsed .sidebar-collapse:focus-visible {
+  background: rgba(31, 35, 41, 0.04);
+  color: var(--token-icon-n1);
+}
+.sidebar--collapsed .sidebar-nav {
+  flex: 0 0 auto;
+  padding: 6px 8px 0;
+  align-items: center;
+}
+.sidebar--collapsed .sidebar-nav-item {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  min-height: 40px;
+  padding: 0;
+  margin: 0 auto;
+  justify-content: center;
+  gap: 0;
+}
+.sidebar--collapsed .sidebar-nav-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.sidebar--collapsed .sidebar-hist,
+.sidebar--collapsed .sidebar-user {
+  display: none;
+}

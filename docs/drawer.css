@@ -1,0 +1,166 @@
+/* ========== Drawer：批量质检 · Artifacts 式摘要卡 ========== */
+.drawer-panel {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  min-height: 0;
+}
+
+/* 顶栏：与 .chat-header-bar 同高、同底部分割线（单一边框，避免与主栏错位） */
+.drawer-panel-header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  box-sizing: border-box;
+  min-height: 48px;
+  padding: 0 16px 0 14px;
+  border-bottom: 0.5px solid var(--token-line-border-card);
+  background: var(--token-bg-float);
+}
+.drawer-panel-header-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--token-text-title);
+}
+.drawer-panel-header .btn-back--icon-only {
+  margin-left: 0;
+  flex-shrink: 0;
+}
+
+/* 质检结果抽屉：顶栏主标题为任务名称 */
+.drawer-panel-header-task-title {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+  color: var(--token-text-title);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 4px;
+}
+
+.drawer-stack {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 14px 14px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+}
+
+/* 卡片外小节标题 */
+.drawer-kicker {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--token-text-title);
+}
+
+/* 线框卡片 */
+.drawer-qc-card {
+  background: var(--token-bg-body);
+  border: 0.5px solid var(--token-line-border-card);
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(31, 35, 41, 0.04);
+}
+.drawer-qc-card-inner {
+  padding: 12px 12px 14px;
+}
+
+/* 文案区 */
+.drawer-qc-body {
+  flex: 1;
+  min-width: 0;
+}
+.drawer-qc-title-row {
+  display: block;
+  line-height: 20px;
+}
+.drawer-qc-title {
+  display: inline;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--token-text-title);
+  word-break: break-word;
+  vertical-align: baseline;
+}
+.drawer-qc-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 6px;
+  padding: 1px 7px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 18px;
+  background: var(--token-success-light);
+  color: var(--token-success-text);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.drawer-qc-badge--processing {
+  background: var(--token-primary-light);
+  color: var(--token-primary);
+}
+.drawer-qc-meta.result-header-meta--pipe {
+  margin-top: 6px;
+  font-size: 11px;
+  line-height: 17px;
+  color: var(--token-text-caption);
+}
+
+.drawer-panel-header--result {
+  /* 与下方表格区无分割线，避免顶栏与 meta 之间出现横线 */
+  border-bottom: none;
+}
+/* 质检结果抽屉：标题 + 飞书操作钮 + 关闭同一行；标题省略号，hover 见 data-ud-tooltip */
+.drawer-panel-header--result-inline {
+  justify-content: flex-start;
+  gap: 8px;
+  min-height: 0;
+  align-items: center;
+  padding: 8px 16px 0 14px;
+}
+.drawer-panel-header--result-inline .drawer-panel-header-task-title {
+  flex: 1;
+  min-width: 0;
+  padding-right: 0;
+  cursor: default;
+  /* 与下方 meta 左缘对齐：任务名在抽屉顶栏，不用 .result-title-line */
+  padding-left: 4px;
+}
+.drawer-panel-header-inline-actions {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.drawer-panel-header-inline-actions.result-header-actions {
+  gap: 8px;
+}
+.drawer-panel--result {
+  min-width: 0;
+  gap: 0;
+}
+.drawer-result-scroll {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+

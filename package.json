@@ -2,6 +2,7 @@
   "name": "figma-patent-ai",
   "private": true,
   "scripts": {
+    "build": "node build.mjs",
     "preview": "node preview.mjs"
   }
 }

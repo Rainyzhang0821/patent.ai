@@ -1,0 +1,54 @@
+/* ========== History（左侧栏对话列表 · 豆包式） ========== */
+
+.hist-section-title {
+  flex-shrink: 0;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+  color: var(--token-text-placeholder);
+}
+
+.hist-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hist-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease;
+  user-select: none;
+  border: 0.5px solid transparent;
+  box-sizing: border-box;
+}
+
+.hist-item:hover:not(.is-active) {
+  background: rgba(31, 35, 41, 0.04);
+}
+
+/* 侧栏内选中态由 .sidebar-hist .hist-item.is-active 与顶部 Tab 统一 */
+.hist-item.is-active {
+  background: var(--token-bg-float);
+  border-color: var(--token-bg-filler);
+}
+
+.hist-item-label {
+  flex: 1;
+  min-width: 0;
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--token-text-title);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hist-item.is-active .hist-item-label {
+  font-weight: 500;
+}
