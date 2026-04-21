@@ -97,16 +97,16 @@ function renderHomePage() {
             <span class="home-prompt-title">你可能想问</span>
           </div>
           <div class="home-chips">
-            <div class="home-chip">
-              <span class="home-chip-emoji">📊</span>
+            <div class="home-chip" role="button" tabindex="0" data-action="home-suggest-prompt" aria-label="哪个专利代理商的初稿质量最高？">
+              <span class="home-chip-emoji" aria-hidden="true">📊</span>
               <span class="home-chip-text">哪个专利代理商的初稿质量最高？</span>
             </div>
-            <div class="home-chip">
-              <span class="home-chip-emoji">📈</span>
+            <div class="home-chip" role="button" tabindex="0" data-action="home-suggest-prompt" aria-label="北京市百伦律师事务所的稿件近 3 年对比一下，质量是否有所提高？">
+              <span class="home-chip-emoji" aria-hidden="true">📈</span>
               <span class="home-chip-text">北京市百伦律师事务所的稿件近 3 年对比一下，质量是否有所提高？</span>
             </div>
-            <div class="home-chip">
-              <span class="home-chip-emoji">🎯</span>
+            <div class="home-chip" role="button" tabindex="0" data-action="home-suggest-prompt" aria-label="北京市百伦律师事务所的代理人稿件水平如何？">
+              <span class="home-chip-emoji" aria-hidden="true">🎯</span>
               <span class="home-chip-text">北京市百伦律师事务所的代理人稿件水平如何？</span>
             </div>
           </div>

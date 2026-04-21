@@ -232,10 +232,14 @@ function formatChatHistoryTime(d) {
 }
 
 /** 首页大输入框发送：新建一条历史会话并进入普通对话，不进入质检流程 */
-function startNewConversationFromHome() {
+function startNewConversationFromHome(overrideText) {
   const ta = document.getElementById('home-chat-input');
-  if (!ta) return;
-  const text = ta.value.trim();
+  let text = '';
+  if (overrideText != null && String(overrideText).trim() !== '') {
+    text = String(overrideText).trim();
+  } else if (ta) {
+    text = ta.value.trim();
+  }
   if (!text) return;
 
   const id = 'h-' + Date.now();
@@ -280,8 +284,10 @@ function startNewConversationFromHome() {
   resetSessionExtras();
   resetChatSessionTitle();
 
-  ta.value = '';
-  ta.style.height = 'auto';
+  if (ta) {
+    ta.value = '';
+    ta.style.height = 'auto';
+  }
   const btn = document.getElementById('home-send-btn');
   if (btn) btn.classList.remove('is-active');
 
@@ -325,6 +331,23 @@ function render() {
 
   app.innerHTML = renderSidebar(sidebarNavActiveKey(), NAV_ITEMS, state) + content;
   postRender();
+}
+
+function bindHomeSuggestChips() {
+  document
+    .querySelectorAll('.home-chip[data-action="home-suggest-prompt"]')
+    .forEach((chip) => {
+      if (chip.dataset.kbdBound) return;
+      chip.dataset.kbdBound = '1';
+      chip.addEventListener('keydown', (e) => {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        e.preventDefault();
+        const textEl = chip.querySelector('.home-chip-text');
+        const text = textEl ? textEl.textContent.trim() : '';
+        if (!text) return;
+        startNewConversationFromHome(text);
+      });
+    });
 }
 
 function bindHomeChatInput() {
@@ -614,6 +637,7 @@ function postRender() {
   bindChatTitleEditor();
   bindChatDrawerSplit();
   bindUdTooltips();
+  bindHomeSuggestChips();
 
   if (
     state.route === 'CHAT' &&
@@ -816,6 +840,14 @@ app.addEventListener('click', (e) => {
         state.qcLinkSubmitText = null;
       }
       break;
+    }
+
+    case 'home-suggest-prompt': {
+      const textEl = el.querySelector('.home-chip-text');
+      const text = textEl ? textEl.textContent.trim() : '';
+      if (!text) break;
+      startNewConversationFromHome(text);
+      return;
     }
 
     case 'go-chat':

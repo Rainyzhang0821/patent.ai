@@ -51,7 +51,13 @@ const server = http.createServer((req, res) => {
         return;
       }
       const ext = path.extname(filePath).toLowerCase();
-      res.writeHead(200, { 'Content-Type': MIME[ext] || 'application/octet-stream' });
+      const headers = { 'Content-Type': MIME[ext] || 'application/octet-stream' };
+      /* 本地预览避免强缓存，改完 JS/CSS 后右侧 Simple Browser 无需手动改 ?v= */
+      if (['.html', '.js', '.css'].includes(ext)) {
+        headers['Cache-Control'] = 'no-store, no-cache, must-revalidate';
+        headers.Pragma = 'no-cache';
+      }
+      res.writeHead(200, headers);
       res.end(data);
     });
   } catch {
